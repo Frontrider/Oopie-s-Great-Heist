@@ -72,7 +72,6 @@ type = 1
 position = Vector2( -81, 143 )
 gravity = 60.0
 jump_force = 650.0
-seen_multiplier = 20.0
 max_seen = 50
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -122,7 +121,6 @@ curve = SubResource( 1 )
 position = Vector2( 147, 18 )
 rotate = false
 script = ExtResource( 6 )
-patrol_speed = 3
 
 [node name="Guard" parent="Guards/PatrolPath/PatrolUnit" instance=ExtResource( 11 )]
 

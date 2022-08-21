@@ -29,6 +29,7 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("ui_select") and is_on_wall():
 		vertical_motion -= jump_force
+		$JumpSound.play()
 	if Input.is_action_pressed("ui_home"):
 		for node in hiding_in:
 			if node.has_method("mark"):
@@ -49,10 +50,16 @@ func convert_sideways_motion(left,right):
 		return 0
 	pass
 
+var over = false
 func was_seen(value):
+	if over:
+		return
 	seen += value*seen_multiplier
 	seen_bar.value = seen
+	if not $SpottedSound.playing:
+		$SpottedSound.play()
 	if seen >= max_seen:
+		over = true
 		$AnimationPlayer.play("get_beamed")
 		get_tree().paused = true
 		emit_signal("seen")

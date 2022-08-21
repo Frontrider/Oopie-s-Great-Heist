@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/background.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/ground.tres" type="TileSet" id=2]
@@ -21,6 +21,8 @@
 [ext_resource path="res://assets/ui/help/xbox_x.tres" type="Texture" id=19]
 [ext_resource path="res://assets/ui/help/nintendo_y.tres" type="Texture" id=20]
 [ext_resource path="res://assets/ui/help/right_arrow.tres" type="Texture" id=21]
+[ext_resource path="res://assets/ui/help/e.tres" type="Texture" id=22]
+[ext_resource path="res://assets/ui/help/x.tres" type="Texture" id=23]
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 8 )
@@ -204,11 +206,19 @@ position = Vector2( 258.333, 121.667 )
 texture = ExtResource( 14 )
 
 [node name="NintendoY" type="Sprite" parent="Hint"]
-position = Vector2( 136.333, 183 )
+position = Vector2( 143.333, 167.333 )
 texture = ExtResource( 20 )
 
+[node name="E" type="Sprite" parent="Hint"]
+position = Vector2( 128.667, 181.667 )
+texture = ExtResource( 22 )
+
+[node name="X" type="Sprite" parent="Hint"]
+position = Vector2( 143, 182 )
+texture = ExtResource( 23 )
+
 [node name="XboxX" type="Sprite" parent="Hint"]
-position = Vector2( 136.333, 168 )
+position = Vector2( 128.667, 167.333 )
 texture = ExtResource( 19 )
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]

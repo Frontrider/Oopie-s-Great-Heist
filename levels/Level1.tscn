@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/ground.tres" type="TileSet" id=1]
 [ext_resource path="res://entity/player/Player.tscn" type="PackedScene" id=2]
@@ -27,6 +27,56 @@
 [ext_resource path="res://assets/ui/help/nintendo_b.tres" type="Texture" id=25]
 [ext_resource path="res://assets/ui/help/xbox_a.tres" type="Texture" id=26]
 [ext_resource path="res://assets/ui/help/space.tres" type="Texture" id=27]
+[ext_resource path="res://assets/ui/help/stand_here.tres" type="Texture" id=28]
+[ext_resource path="res://assets/ui/help/e.tres" type="Texture" id=30]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -187, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -11, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "float"
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -187, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -11, -0.25, 0, 0.25, 0, -19, -0.25, 0, 0.25, 0, -11, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
 
 [node name="Node2D" type="Node2D"]
 pause_mode = 2
@@ -81,7 +131,6 @@ type = 1
 position = Vector2( -81, 143 )
 gravity = 60.0
 jump_force = 650.0
-seen_multiplier = 20.0
 max_seen = 50
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -205,6 +254,10 @@ texture = ExtResource( 15 )
 position = Vector2( -210, 31 )
 texture = ExtResource( 24 )
 
+[node name="e" type="Sprite" parent="Hint"]
+position = Vector2( -210, 46 )
+texture = ExtResource( 30 )
+
 [node name="XboxX" type="Sprite" parent="Hint"]
 position = Vector2( -210, 1 )
 texture = ExtResource( 13 )
@@ -223,6 +276,15 @@ texture = ExtResource( 25 )
 [node name="Space" type="Sprite" parent="."]
 position = Vector2( -181, 190 )
 texture = ExtResource( 27 )
+
+[node name="StandHere" type="Sprite" parent="."]
+position = Vector2( -187, -11 )
+texture = ExtResource( 28 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StandHere"]
+autoplay = "float"
+anims/RESET = SubResource( 1 )
+anims/float = SubResource( 2 )
 
 [connection signal="seen" from="Player" to="Menus" method="show_game_over"]
 [connection signal="trees_gone" from="MidGroundObjects/Trees" to="Menus" method="show_won"]

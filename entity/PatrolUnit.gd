@@ -1,12 +1,13 @@
 extends PathFollow2D
 class_name PatrolUnit
 
-export var patrol_speed = 120.0
+export var patrol_speed = 5.0
+
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_turn(true)
+	_turn(false)
 	pass
 
 func _turn(left):

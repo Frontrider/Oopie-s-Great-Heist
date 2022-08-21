@@ -30,6 +30,10 @@ config/name="Oopi's Great Heist"
 run/main_scene="res://menus/MainMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://Globals.gd"
+
 [display]
 
 window/stretch/mode="2d"
@@ -65,6 +69,10 @@ texture={
 "size_limit": 0,
 "stream": false,
 "svg/scale": 1.0
+}
+ogg_vorbis={
+"loop": false,
+"loop_offset": 0
 }
 
 [input]

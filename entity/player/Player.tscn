@@ -1,8 +1,10 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://entity/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/character_0001.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/character_0000.png" type="Texture" id=3]
+[ext_resource path="res://assets/jump1.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/gameover1.ogg" type="AudioStream" id=5]
 
 [sub_resource type="Gradient" id=13]
 offsets = PoolRealArray( 0, 0.835849 )
@@ -310,6 +312,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("FailedOverlay/Node2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=15]
 resource_name = "get_beamed"
@@ -346,11 +360,24 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("FailedOverlay/Node2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 script = ExtResource( 1 )
 speed = 80.0
 gravity = 120.0
+seen_multiplier = 60.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 pause_mode = 2
@@ -447,6 +474,12 @@ texture = SubResource( 12 )
 pause_mode = 2
 anims/RESET = SubResource( 14 )
 anims/get_beamed = SubResource( 15 )
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="SpottedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 
 [connection signal="area_entered" from="ClimbSensor" to="." method="_on_ClimbSensor_area_entered"]
 [connection signal="area_exited" from="ClimbSensor" to="." method="_on_ClimbSensor_area_exited"]

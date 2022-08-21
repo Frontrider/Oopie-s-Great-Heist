@@ -13,7 +13,7 @@
 [ext_resource path="res://menus/LevelMenus.tscn" type="PackedScene" id=11]
 [ext_resource path="res://entity/See.gd" type="Script" id=12]
 [ext_resource path="res://entity/climbable/Climbable.tscn" type="PackedScene" id=13]
-[ext_resource path="res://menus/LevelSelect.tscn" type="PackedScene" id=14]
+[ext_resource path="res://levels/Level4.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -78,7 +78,6 @@ type = 1
 position = Vector2( -38, -2 )
 gravity = 60.0
 jump_force = 650.0
-seen_multiplier = 20.0
 max_seen = 50
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -132,6 +131,7 @@ curve = SubResource( 1 )
 [node name="PatrolUnit" type="PathFollow2D" parent="Guards/PatrolPath"]
 rotate = false
 script = ExtResource( 8 )
+patrol_speed = 4.0
 
 [node name="Guard" parent="Guards/PatrolPath/PatrolUnit" instance=ExtResource( 9 )]
 
