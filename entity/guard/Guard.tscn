@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/sprites/character_0010.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/character_0009.png" type="Texture" id=2]
+[ext_resource path="res://entity/guard/Guard.gd" type="Script" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "move",
+"speed": 5.0
+} ]
+
+[node name="Guard" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 1, -12 )
+frames = SubResource( 1 )
+animation = "move"
+frame = 1
+playing = true

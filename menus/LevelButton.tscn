@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://menus/LevelButton.gd" type="Script" id=1]
+[ext_resource path="res://assets/ui/font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/ui/level_select/LockedLevelPressed.tres" type="StyleBox" id=3]
+[ext_resource path="res://assets/ui/level_select/AvailableLevel.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/ui/level_select/AvailableLevelPressed.tres" type="StyleBox" id=5]
+[ext_resource path="res://assets/ui/level_select/CompletedLevelPressed.tres" type="StyleBox" id=6]
+[ext_resource path="res://assets/ui/level_select/CompletedLevel.tres" type="StyleBox" id=7]
+[ext_resource path="res://assets/ui/level_select/LockedLevel.tres" type="StyleBox" id=8]
+
+[node name="Button" type="Button"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/disabled = ExtResource( 8 )
+custom_styles/normal = ExtResource( 4 )
+text = "Button"
+script = ExtResource( 1 )
+available = ExtResource( 4 )
+available_pressed = ExtResource( 5 )
+completed = ExtResource( 7 )
+completed_pressed = ExtResource( 6 )
+locked = ExtResource( 8 )
+locked_pressed = ExtResource( 3 )
+
+[connection signal="pressed" from="." to="." method="_on_Button_pressed"]

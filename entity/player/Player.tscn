@@ -1,0 +1,454 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://entity/player/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/character_0001.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/character_0000.png" type="Texture" id=3]
+
+[sub_resource type="Gradient" id=13]
+offsets = PoolRealArray( 0, 0.835849 )
+colors = PoolColorArray( 1, 0.537255, 0.027451, 1, 1, 0.537255, 0.027451, 0.439216 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "falling",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "jumping",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "moving",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node2D/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "idle" ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Node2D/AnimatedSprite:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Node2D/AnimatedSprite:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Node2D/AnimatedSprite:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Node2D/AnimatedSprite:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "falling"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node2D/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "falling" ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Node2D/AnimatedSprite:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Node2D/AnimatedSprite:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Node2D/AnimatedSprite:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Node2D/AnimatedSprite:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node2D/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Node2D/AnimatedSprite:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Node2D/AnimatedSprite:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.95, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Node2D/AnimatedSprite:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 1 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Node2D/AnimatedSprite:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1.15, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "moving"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node2D/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "moving" ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Node2D/AnimatedSprite:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Node2D/AnimatedSprite:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Node2D/AnimatedSprite:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Node2D/AnimatedSprite:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 6, 8 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 2, 8 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 1, 0.0666667, 0.0666667, 0.584314 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.737255, 0.737255, 0.737255, 0.388235 )
+
+[sub_resource type="Gradient" id=11]
+offsets = PoolRealArray( 0, 0.5, 1 )
+colors = PoolColorArray( 1, 0.113725, 0.113725, 0.376471, 1, 0, 0, 1, 1, 0.113725, 0.113725, 0.376471 )
+
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 11 )
+width = 20
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("FailedOverlay/Node2D/Sprite:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("FailedOverlay/Node2D/Sprite:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 800, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "get_beamed"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("FailedOverlay/Node2D/Sprite:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( -0.01, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("FailedOverlay/Node2D/Sprite:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"points": PoolRealArray( 800, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 1 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+script = ExtResource( 1 )
+speed = 80.0
+gravity = 120.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+pause_mode = 2
+z_index = 10
+emitting = false
+amount = 50
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 70.42
+angular_velocity = 76.06
+linear_accel = 14.08
+angle = 720.0
+angle_random = 1.0
+scale_amount = 11.56
+scale_amount_random = 0.58
+color = Color( 1, 0.537255, 0.027451, 1 )
+color_ramp = SubResource( 13 )
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../FailedOverlay/Node2D")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../CanvasLayer/Node2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -8 )
+shape = SubResource( 6 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 0, -12 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Node2D"]
+frames = SubResource( 1 )
+animation = "idle"
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
+root_node = NodePath("../..")
+anims/RESET = SubResource( 2 )
+anims/falling = SubResource( 5 )
+anims/idle = SubResource( 3 )
+anims/moving = SubResource( 4 )
+
+[node name="ClimbSensor" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ClimbSensor"]
+position = Vector2( 0, -8 )
+shape = SubResource( 7 )
+
+[node name="HideSensor" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HideSensor"]
+position = Vector2( 0, -8 )
+shape = SubResource( 8 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 7
+follow_viewport_enable = true
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer"]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Node2D"]
+margin_left = -8.0
+margin_top = -31.0
+margin_right = 9.0
+margin_bottom = -27.0
+rect_min_size = Vector2( 0, 4 )
+custom_styles/fg = SubResource( 9 )
+custom_styles/bg = SubResource( 10 )
+percent_visible = false
+
+[node name="FailedOverlay" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = -1
+follow_viewport_enable = true
+
+[node name="Node2D" type="Node2D" parent="FailedOverlay"]
+pause_mode = 2
+visible = false
+
+[node name="Sprite" type="Sprite" parent="FailedOverlay/Node2D"]
+position = Vector2( 212, -216 )
+rotation = 0.781832
+scale = Vector2( 1, 800 )
+texture = SubResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 2
+anims/RESET = SubResource( 14 )
+anims/get_beamed = SubResource( 15 )
+
+[connection signal="area_entered" from="ClimbSensor" to="." method="_on_ClimbSensor_area_entered"]
+[connection signal="area_exited" from="ClimbSensor" to="." method="_on_ClimbSensor_area_exited"]
+[connection signal="area_entered" from="HideSensor" to="." method="_on_HideSensor_area_entered"]
+[connection signal="area_exited" from="HideSensor" to="." method="_on_HideSensor_area_exited"]

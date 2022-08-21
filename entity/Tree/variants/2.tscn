@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/tree.tres" type="TileSet" id=1]
+
+[node name="TileMap" type="TileMap"]
+show_behind_parent = true
+position = Vector2( -9, 0 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 18, 18 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( -589825, 1, 0, -655360, 2, 0, -655359, 3, 0, -524289, 9, 0, -589824, 17, 0, -589823, 11, 0, -458753, 13, 0, -524288, 14, 0, -524287, 15, 0, -327682, 1, 0, -327681, 2, 0, -393216, 2, 0, -393215, 3, 0, -262146, 9, 0, -262145, 10, 0, -327680, 17, 0, -327679, 11, 0, -262144, 16, 0, -196608, 20, 0, -131072, 20, 0, -65536, 25, 0 )
+
+[node name="Background" type="TileMap" parent="."]
+show_behind_parent = true
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 18, 18 )
+format = 1
+tile_data = PoolIntArray( -524288, 24, 0, -458752, 16, 0, -393216, 16, 0 )
